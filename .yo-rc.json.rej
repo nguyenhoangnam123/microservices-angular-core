@@ -1,0 +1,28 @@
+diff a/.yo-rc.json b/.yo-rc.json	(rejected hunks)
+@@ -9,4 +9 @@
+-    "languages": [
+-      "en",
+-      "fr"
+-    ],
++    "languages": ["en", "fr"],
+@@ -22,3 +19 @@
+-    "testFrameworks": [
+-      "protractor"
+-    ],
++    "testFrameworks": ["protractor"],
+@@ -46,12 +41,2 @@
+-  "entities": [
+-    "Users",
+-    "Roles",
+-    "UserRoles",
+-    "Menu",
+-    "Operation",
+-    "Permission",
+-    "RolesPermiss",
+-    "Zone",
+-    "MenuZone"
+-  ]
+-}
+\ No newline at end of file
++  "entities": ["Users", "Roles", "UserRoles", "Menu", "Operation", "Permission", "RolesPermiss", "Zone", "MenuZone"]
++}
