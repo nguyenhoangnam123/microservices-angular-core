@@ -1,0 +1,55 @@
+{
+    "name": "UserRoles",
+    "fields": [
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "userRoles",
+            "relationshipName": "users",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "roles",
+            "otherEntityRelationshipName": "userRoles",
+            "relationshipName": "roles",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191216134133",
+    "entityTableName": "user_roles",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "eGP",
+        "UserManagement"
+    ],
+    "microserviceName": "UserManagement"
+}

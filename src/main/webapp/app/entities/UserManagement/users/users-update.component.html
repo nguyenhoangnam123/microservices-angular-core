@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-users-heading" jhiTranslate="eGpApp.userManagementUsers.home.createOrEditLabel">Create or edit a Users</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.organizationUnitId" for="field_organizationUnitId">Organization Unit Id</label>
+                    <input type="number" class="form-control" name="organizationUnitId" id="field_organizationUnitId"
+                           formControlName="organizationUnitId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.passwordHash" for="field_passwordHash">Password Hash</label>
+                    <input type="text" class="form-control" name="passwordHash" id="field_passwordHash"
+                           formControlName="passwordHash"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.securityStamp" for="field_securityStamp">Security Stamp</label>
+                    <input type="text" class="form-control" name="securityStamp" id="field_securityStamp"
+                           formControlName="securityStamp"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.phoneNumber" for="field_phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                           formControlName="phoneNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.jobTitle" for="field_jobTitle">Job Title</label>
+                    <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
+                           formControlName="jobTitle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.officeTel" for="field_officeTel">Office Tel</label>
+                    <input type="text" class="form-control" name="officeTel" id="field_officeTel"
+                           formControlName="officeTel"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.userName" for="field_userName">User Name</label>
+                    <input type="text" class="form-control" name="userName" id="field_userName"
+                           formControlName="userName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.isActive" for="field_isActive">Is Active</label>
+                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                           formControlName="isActive"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.dateCreated" for="field_dateCreated">Date Created</label>
+                    <div class="d-flex">
+                        <input id="field_dateCreated" type="datetime-local" class="form-control" name="dateCreated" formControlName="dateCreated" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.dateUpdated" for="field_dateUpdated">Date Updated</label>
+                    <div class="d-flex">
+                        <input id="field_dateUpdated" type="datetime-local" class="form-control" name="dateUpdated" formControlName="dateUpdated" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.isDeleted" for="field_isDeleted">Is Deleted</label>
+                    <input type="checkbox" class="form-control" name="isDeleted" id="field_isDeleted"
+                           formControlName="isDeleted"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.pictureId" for="field_pictureId">Picture Id</label>
+                    <input type="number" class="form-control" name="pictureId" id="field_pictureId"
+                           formControlName="pictureId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.isOnline" for="field_isOnline">Is Online</label>
+                    <input type="checkbox" class="form-control" name="isOnline" id="field_isOnline"
+                           formControlName="isOnline"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.dateOnlineUpdated" for="field_dateOnlineUpdated">Date Online Updated</label>
+                    <div class="d-flex">
+                        <input id="field_dateOnlineUpdated" type="datetime-local" class="form-control" name="dateOnlineUpdated" formControlName="dateOnlineUpdated" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eGpApp.userManagementUsers.dateOfflineUpdated" for="field_dateOfflineUpdated">Date Offline Updated</label>
+                    <div class="d-flex">
+                        <input id="field_dateOfflineUpdated" type="datetime-local" class="form-control" name="dateOfflineUpdated" formControlName="dateOfflineUpdated" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{
+  "eGpApp": {
+    "userManagementOperation": {
+      "home": {
+        "title": "Operations",
+        "createLabel": "Créer un nouveau Operation",
+        "createOrEditLabel": "Créer ou éditer un Operation",
+        "notFound": "Aucun Operation trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Operation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Operation"
+      },
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "permission": "Permission"
+    }
+  },
+  "userManagementApp": {
+    "userManagementOperation": {
+      "created": "Un nouveau Operation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Operation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Operation avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

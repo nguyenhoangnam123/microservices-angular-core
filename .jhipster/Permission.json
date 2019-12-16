@@ -1,0 +1,61 @@
+{
+    "name": "Permission",
+    "fields": [
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "rolesPermiss",
+            "otherEntityRelationshipName": "permission",
+            "relationshipName": "rolesPermiss"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "permission",
+            "relationshipName": "menu",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "operation",
+            "otherEntityRelationshipName": "permission",
+            "relationshipName": "operation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191216134136",
+    "entityTableName": "permission",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "eGP",
+        "UserManagement"
+    ],
+    "microserviceName": "UserManagement"
+}

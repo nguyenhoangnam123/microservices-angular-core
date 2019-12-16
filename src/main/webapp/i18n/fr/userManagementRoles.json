@@ -1,0 +1,37 @@
+{
+  "eGpApp": {
+    "userManagementRoles": {
+      "home": {
+        "title": "Roles",
+        "createLabel": "Créer un nouveau Roles",
+        "createOrEditLabel": "Créer ou éditer un Roles",
+        "notFound": "Aucun Roles trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Roles {{ id }} ?"
+      },
+      "detail": {
+        "title": "Roles"
+      },
+      "code": "Code",
+      "name": "Name",
+      "note": "Note",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "isActive": "Is Active",
+      "userRoles": "User Roles",
+      "rolesPermiss": "Roles Permiss",
+      "menuZone": "Menu Zone"
+    }
+  },
+  "userManagementApp": {
+    "userManagementRoles": {
+      "created": "Un nouveau Roles a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Roles avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Roles avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

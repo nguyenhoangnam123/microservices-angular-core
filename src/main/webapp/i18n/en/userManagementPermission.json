@@ -1,0 +1,33 @@
+{
+  "eGpApp": {
+    "userManagementPermission": {
+      "home": {
+        "title": "Permissions",
+        "createLabel": "Create a new Permission",
+        "createOrEditLabel": "Create or edit a Permission",
+        "notFound": "No Permissions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Permission {{ id }}?"
+      },
+      "detail": {
+        "title": "Permission"
+      },
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "rolesPermiss": "Roles Permiss",
+      "menu": "Menu",
+      "operation": "Operation"
+    }
+  },
+  "userManagementApp": {
+    "userManagementPermission": {
+      "created": "A new Permission is created with identifier {{ param }}",
+      "updated": "A Permission is updated with identifier {{ param }}",
+      "deleted": "A Permission is deleted with identifier {{ param }}"
+    }
+  }
+}

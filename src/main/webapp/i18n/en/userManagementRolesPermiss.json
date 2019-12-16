@@ -1,0 +1,33 @@
+{
+  "eGpApp": {
+    "userManagementRolesPermiss": {
+      "home": {
+        "title": "Roles Permisses",
+        "createLabel": "Create a new Roles Permiss",
+        "createOrEditLabel": "Create or edit a Roles Permiss",
+        "notFound": "No Roles Permisses found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Roles Permiss {{ id }}?"
+      },
+      "detail": {
+        "title": "Roles Permiss"
+      },
+      "value": "Value",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "roles": "Roles",
+      "permission": "Permission"
+    }
+  },
+  "userManagementApp": {
+    "userManagementRolesPermiss": {
+      "created": "A new Roles Permiss is created with identifier {{ param }}",
+      "updated": "A Roles Permiss is updated with identifier {{ param }}",
+      "deleted": "A Roles Permiss is deleted with identifier {{ param }}"
+    }
+  }
+}

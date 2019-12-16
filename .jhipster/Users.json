@@ -1,0 +1,107 @@
+{
+    "name": "Users",
+    "fields": [
+        {
+            "fieldName": "organizationUnitId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "passwordHash",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "securityStamp",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jobTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "officeTel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "pictureId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isOnline",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dateOnlineUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateOfflineUpdated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userRoles",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "userRoles"
+        }
+    ],
+    "changelogDate": "20191216134131",
+    "entityTableName": "users",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "eGP",
+        "UserManagement"
+    ],
+    "microserviceName": "UserManagement"
+}

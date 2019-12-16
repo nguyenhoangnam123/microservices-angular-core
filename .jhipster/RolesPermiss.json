@@ -1,0 +1,59 @@
+{
+    "name": "RolesPermiss",
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "roles",
+            "otherEntityRelationshipName": "rolesPermiss",
+            "relationshipName": "roles",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "permission",
+            "otherEntityRelationshipName": "rolesPermiss",
+            "relationshipName": "permission",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191216134137",
+    "entityTableName": "roles_permiss",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "eGP",
+        "UserManagement"
+    ],
+    "microserviceName": "UserManagement"
+}

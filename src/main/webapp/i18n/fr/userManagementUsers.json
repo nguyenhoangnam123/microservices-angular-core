@@ -1,0 +1,46 @@
+{
+  "eGpApp": {
+    "userManagementUsers": {
+      "home": {
+        "title": "Users",
+        "createLabel": "Créer un nouveau Users",
+        "createOrEditLabel": "Créer ou éditer un Users",
+        "notFound": "Aucun Users trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Users {{ id }} ?"
+      },
+      "detail": {
+        "title": "Users"
+      },
+      "organizationUnitId": "Organization Unit Id",
+      "email": "Email",
+      "passwordHash": "Password Hash",
+      "securityStamp": "Security Stamp",
+      "phoneNumber": "Phone Number",
+      "jobTitle": "Job Title",
+      "officeTel": "Office Tel",
+      "userName": "User Name",
+      "name": "Name",
+      "description": "Description",
+      "isActive": "Is Active",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "pictureId": "Picture Id",
+      "isOnline": "Is Online",
+      "dateOnlineUpdated": "Date Online Updated",
+      "dateOfflineUpdated": "Date Offline Updated",
+      "userRoles": "User Roles"
+    }
+  },
+  "userManagementApp": {
+    "userManagementUsers": {
+      "created": "Un nouveau Users a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Users avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Users avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

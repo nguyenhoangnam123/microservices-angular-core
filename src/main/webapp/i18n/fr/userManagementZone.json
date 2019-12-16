@@ -1,0 +1,33 @@
+{
+  "eGpApp": {
+    "userManagementZone": {
+      "home": {
+        "title": "Zones",
+        "createLabel": "Créer un nouveau Zone",
+        "createOrEditLabel": "Créer ou éditer un Zone",
+        "notFound": "Aucun Zone trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Zone {{ id }} ?"
+      },
+      "detail": {
+        "title": "Zone"
+      },
+      "code": "Code",
+      "name": "Name",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "menuZone": "Menu Zone"
+    }
+  },
+  "userManagementApp": {
+    "userManagementZone": {
+      "created": "Un nouveau Zone a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Zone avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Zone avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

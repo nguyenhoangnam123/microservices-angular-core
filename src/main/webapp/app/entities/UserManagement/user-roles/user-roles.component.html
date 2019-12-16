@@ -1,0 +1,86 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eGpApp.userManagementUserRoles.home.title">User Roles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-user-roles" [routerLink]="['/user-roles/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="eGpApp.userManagementUserRoles.home.createLabel">
+            Create a new User Roles
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="userRoles?.length === 0">
+        <span jhiTranslate="eGpApp.userManagementUserRoles.home.notFound">No userRoles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="userRoles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateCreated"><span jhiTranslate="eGpApp.userManagementUserRoles.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateUpdated"><span jhiTranslate="eGpApp.userManagementUserRoles.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="eGpApp.userManagementUserRoles.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="eGpApp.userManagementUserRoles.updatedBy">Updated By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="isDeleted"><span jhiTranslate="eGpApp.userManagementUserRoles.isDeleted">Is Deleted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="users.id"><span jhiTranslate="eGpApp.userManagementUserRoles.users">Users</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="roles.id"><span jhiTranslate="eGpApp.userManagementUserRoles.roles">Roles</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userRoles of userRoles ;trackBy: trackId">
+                <td><a [routerLink]="['/user-roles', userRoles.id, 'view' ]">{{userRoles.id}}</a></td>
+                <td>{{userRoles.dateCreated | date:'medium'}}</td>
+                <td>{{userRoles.dateUpdated | date:'medium'}}</td>
+                <td>{{userRoles.createdBy}}</td>
+                <td>{{userRoles.updatedBy}}</td>
+                <td>{{userRoles.isDeleted}}</td>
+                <td>
+                    <div *ngIf="userRoles.users">
+                        <a [routerLink]="['/users', userRoles.users?.id, 'view' ]" >{{userRoles.users?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="userRoles.roles">
+                        <a [routerLink]="['/roles', userRoles.roles?.id, 'view' ]" >{{userRoles.roles?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/user-roles', userRoles.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/user-roles', userRoles.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/user-roles', { outlets: { popup: userRoles.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="userRoles?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

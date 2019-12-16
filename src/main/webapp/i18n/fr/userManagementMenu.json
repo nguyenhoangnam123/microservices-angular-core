@@ -1,0 +1,35 @@
+{
+  "eGpApp": {
+    "userManagementMenu": {
+      "home": {
+        "title": "Menus",
+        "createLabel": "Créer un nouveau Menu",
+        "createOrEditLabel": "Créer ou éditer un Menu",
+        "notFound": "Aucun Menu trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Menu {{ id }} ?"
+      },
+      "detail": {
+        "title": "Menu"
+      },
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "permission": "Permission",
+      "menuZone": "Menu Zone"
+    }
+  },
+  "userManagementApp": {
+    "userManagementMenu": {
+      "created": "Un nouveau Menu a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Menu avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Menu avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

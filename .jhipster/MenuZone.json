@@ -1,0 +1,63 @@
+{
+    "name": "MenuZone",
+    "fields": [
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "roles",
+            "otherEntityRelationshipName": "menuZone",
+            "relationshipName": "roles",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "menuZone",
+            "relationshipName": "menu",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "zone",
+            "otherEntityRelationshipName": "menuZone",
+            "relationshipName": "zone",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191216134139",
+    "entityTableName": "menu_zone",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "eGP",
+        "UserManagement"
+    ],
+    "microserviceName": "UserManagement"
+}

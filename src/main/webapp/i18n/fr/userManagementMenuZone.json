@@ -1,0 +1,33 @@
+{
+  "eGpApp": {
+    "userManagementMenuZone": {
+      "home": {
+        "title": "MenuZones",
+        "createLabel": "Créer un nouveau Menu Zone",
+        "createOrEditLabel": "Créer ou éditer un Menu Zone",
+        "notFound": "Aucun Menu Zone trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Menu Zone {{ id }} ?"
+      },
+      "detail": {
+        "title": "Menu Zone"
+      },
+      "dateCreated": "Date Created",
+      "dateUpdated": "Date Updated",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "isDeleted": "Is Deleted",
+      "roles": "Roles",
+      "menu": "Menu",
+      "zone": "Zone"
+    }
+  },
+  "userManagementApp": {
+    "userManagementMenuZone": {
+      "created": "Un nouveau Menu Zone a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Menu Zone avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Menu Zone avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}
