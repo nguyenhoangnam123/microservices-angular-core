@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import './vendor';
+// import './vendor';
 import { EGpSharedModule } from 'app/shared/shared.module';
 import { EGpCoreModule } from 'app/core/core.module';
 import { EGpAppRoutingModule } from './app-routing.module';
