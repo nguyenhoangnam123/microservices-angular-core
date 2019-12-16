@@ -38,7 +38,7 @@ module.exports = options =>
     },
     entry: {
       polyfills: './src/main/webapp/app/polyfills',
-      global: './src/main/webapp/content/scss/global.scss',
+      global: './src/main/webapp/content/scss/style.angular.scss',
       main: './src/main/webapp/app/app.main'
     },
     output: {
