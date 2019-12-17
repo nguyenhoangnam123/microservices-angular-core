@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // import './vendor';
 import { EGpSharedModule } from 'app/shared/shared.module';
-import { EGpCoreModule } from 'app/core/core.module';
+import { CoreModule } from 'app/core/core.module';
 import { EGpAppRoutingModule } from './app-routing.module';
 import { EGpHomeModule } from './home/home.module';
 import { EGpEntityModule } from './entities/entity.module';
@@ -19,7 +19,7 @@ import { ErrorComponent } from './layouts/error/error.component';
   imports: [
     BrowserModule,
     EGpSharedModule,
-    EGpCoreModule,
+    CoreModule,
     EGpHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EGpEntityModule,
