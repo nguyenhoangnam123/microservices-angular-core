@@ -33,8 +33,8 @@ export class PasswordValidation {
 
 @Component({
   selector: 'kt-change-password',
-  templateUrl: './change-password.component.html'
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './change-password.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChangePasswordComponent implements OnInit {
   // Public properties

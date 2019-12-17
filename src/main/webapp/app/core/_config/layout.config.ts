@@ -7,20 +7,20 @@ export class LayoutConfig {
     self: {
       layout: 'fluid', // fluid|boxed
       body: {
-        'background-image': './assets/media/misc/bg-1.jpg'
+        'background-image': './content/media/misc/bg-1.jpg'
       },
       logo: {
-        dark: './assets/media/logos/logo-light.png',
-        light: './assets/media/logos/logo-dark.png',
-        brand: './assets/media/logos/logo-light.png',
-        green: './assets/media/logos/logo-light.png'
+        dark: './content/media/logos/logo-light.png',
+        light: './content/media/logos/logo-dark.png',
+        brand: './content/media/logos/logo-light.png',
+        green: './content/media/logos/logo-light.png'
       }
     },
     // == Page Splash Screen loading
     loader: {
       enabled: true,
       type: 'spinner-logo',
-      logo: './assets/media/logos/logo-mini-md.png',
+      logo: './content/media/logos/logo-mini-md.png',
       message: 'Please wait...'
     },
     // == Colors for javascript

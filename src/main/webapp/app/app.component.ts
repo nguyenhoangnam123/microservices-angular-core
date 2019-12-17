@@ -26,12 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * @param layoutConfigService: LayoutCongifService
    * @param splashScreenService: SplashScreenService
    */
-  constructor(
-    private translationService: TranslationService,
-    private router: Router,
-    private layoutConfigService: LayoutConfigService,
-    private splashScreenService: SplashScreenService
-  ) {}
+  constructor(private router: Router, private layoutConfigService: LayoutConfigService) {}
 
   /**
    * @ Lifecycle sequences => https://angular.io/guide/lifecycle-hooks
@@ -47,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // hide splash screen
-        this.splashScreenService.hide();
+        // this.splashScreenService.hide();
 
         // scroll to top on every route change
         window.scrollTo(0, 0);

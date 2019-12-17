@@ -17,6 +17,7 @@ import { AppState } from '../../../../../core/reducers';
 import { QueryParamsModel } from '../../../../../core/_base/crud';
 
 // Components
+
 import { RoleEditDialogComponent } from '../role-edit/role-edit.dialog.component';
 
 // Table with EDIT item in MODAL

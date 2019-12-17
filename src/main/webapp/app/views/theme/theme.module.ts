@@ -35,7 +35,7 @@ import { BaseComponent } from './base/base.component';
 import { PagesModule } from '../pages/pages.module';
 import { HtmlClassService } from './html-class.service';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
-import { ErrorPageComponent } from './content/error-page/error-page.component';
+// import { ErrorPageComponent } from './content/error-page/error-page.component';
 import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from '../../core/auth';
 
 @NgModule({
@@ -58,9 +58,9 @@ import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from
     AsideLeftComponent,
 
     // horizontal menu components
-    MenuHorizontalComponent,
+    MenuHorizontalComponent
 
-    ErrorPageComponent
+    // ErrorPageComponent
   ],
   exports: [
     BaseComponent,
@@ -81,9 +81,9 @@ import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from
     AsideLeftComponent,
 
     // horizontal menu components
-    MenuHorizontalComponent,
+    MenuHorizontalComponent
 
-    ErrorPageComponent
+    // ErrorPageComponent
   ],
   providers: [HtmlClassService],
   imports: [

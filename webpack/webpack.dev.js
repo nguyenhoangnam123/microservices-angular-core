@@ -6,6 +6,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const CopyPlugin = require('copy-webpack-plugin');
 // webpack css minifier
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -85,7 +86,14 @@ module.exports = options =>
       new WebpackNotifierPlugin({
         title: 'JHipster',
         contentImage: path.join(__dirname, 'logo-jhipster.png')
-      })
+      }),
+      //copy contnet to assests
+      new CopyPlugin([
+        {
+          from: path.resolve(__dirname, './src/main/webapp/content'),
+          to: utils.root('target/classes/static/assets')
+        }
+      ])
     ].filter(Boolean),
     module: {
       rules: [
@@ -148,6 +156,15 @@ module.exports = options =>
               }
             }
           ]
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
+          loader: 'file-loader',
+          options: {
+            digest: 'hex',
+            hash: 'sha512',
+            name: 'content/[hash].[ext]'
+          }
         }
       ]
     },

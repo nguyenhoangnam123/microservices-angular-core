@@ -26,7 +26,19 @@
         }
       },
       "prefix": "jhi",
-      "architect": {}
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "assets": ["webapp/content"],
+          "styles": [
+            "src/main/webapp/app/styles.scss",
+            "src/main/webapp/content/plugins/line-awesome/css/line-awesome.css",
+            "src/main/webapp/content/plugins/flaticon/flaticon.css",
+            "src/main/webapp/content/plugins/flaticon2/flaticon.css",
+            "src/main/webapp/content/sass/style.angular.scss"
+          ]
+        }
+      }
     }
   },
   "defaultProject": "e-gp",

@@ -1,5 +1,5 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { DatePipe, registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData, CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -20,9 +20,28 @@ import { ErrorHandlerInterceptor } from 'app/blocks/interceptor/errorhandler.int
 import { NotificationInterceptor } from 'app/blocks/interceptor/notification.interceptor';
 
 import { fontAwesomeIcons } from './icons/font-awesome-icons';
+// Layout Directives
+// Services
+import {
+  ContentAnimateDirective,
+  FirstLetterPipe,
+  GetObjectPipe,
+  HeaderDirective,
+  JoinPipe,
+  MenuDirective,
+  OffcanvasDirective,
+  SafePipe,
+  ScrollTopDirective,
+  SparklineChartDirective,
+  StickyDirective,
+  TabClickEventDirective,
+  TimeElapsedPipe,
+  ToggleDirective
+} from './_base/layout';
 
 @NgModule({
   imports: [
+    CommonModule,
     HttpClientModule,
     CookieModule.forRoot(),
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
@@ -45,6 +64,24 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
         deps: [JhiConfigService]
       }
     })
+  ],
+  declarations: [
+    // directives
+    ScrollTopDirective,
+    HeaderDirective,
+    OffcanvasDirective,
+    ToggleDirective,
+    MenuDirective,
+    TabClickEventDirective,
+    SparklineChartDirective,
+    ContentAnimateDirective,
+    StickyDirective,
+    // pipes
+    TimeElapsedPipe,
+    JoinPipe,
+    GetObjectPipe,
+    SafePipe,
+    FirstLetterPipe
   ],
   providers: [
     Title,
@@ -74,6 +111,24 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
       useClass: NotificationInterceptor,
       multi: true
     }
+  ],
+  exports: [
+    // directives
+    ScrollTopDirective,
+    HeaderDirective,
+    OffcanvasDirective,
+    ToggleDirective,
+    MenuDirective,
+    TabClickEventDirective,
+    SparklineChartDirective,
+    ContentAnimateDirective,
+    StickyDirective,
+    // pipes
+    TimeElapsedPipe,
+    JoinPipe,
+    GetObjectPipe,
+    SafePipe,
+    FirstLetterPipe
   ]
 })
 export class CoreModule {

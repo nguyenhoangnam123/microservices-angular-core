@@ -32,7 +32,7 @@ export class Widget5Component implements OnInit {
     if (!this.data) {
       this.data = shuffle([
         {
-          pic: './assets/media/products/product6.jpg',
+          pic: './content/media/products/product6.jpg',
           title: 'Great Logo Designn',
           desc: 'Metronic admin themes.',
           info:
@@ -49,7 +49,7 @@ export class Widget5Component implements OnInit {
             ' </div>'
         },
         {
-          pic: './assets/media/products/product10.jpg',
+          pic: './content/media/products/product10.jpg',
           title: 'Branding Mockup',
           desc: 'Metronic bootstrap themes.',
           info:
@@ -66,7 +66,7 @@ export class Widget5Component implements OnInit {
             ' </div>'
         },
         {
-          pic: './assets/media/products/product11.jpg',
+          pic: './content/media/products/product11.jpg',
           title: 'Awesome Mobile App',
           desc: 'Metronic admin themes. Lorem Ipsum Amet.',
           info:

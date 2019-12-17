@@ -38,10 +38,10 @@ export class Timeline2Component implements OnInit {
           text: 'AEOL Meeting With',
           attachment:
             '\n' +
-            '<a href="$event.preventDefault();"><img src="./assets/media/users/100_4.jpg" title="" alt=""></a>' +
-            '<a href="$event.preventDefault();"><img src="./assets/media/users/100_13.jpg" title="" alt=""></a>' +
-            '<a href="$event.preventDefault();"><img src="./assets/media/users/100_11.jpg" title="" alt=""></a>' +
-            '<a href="$event.preventDefault();"><img src="./assets/media/users/100_14.jpg" title="" alt=""></a>'
+            '<a href="$event.preventDefault();"><img src="./content/media/users/100_4.jpg" title="" alt=""></a>' +
+            '<a href="$event.preventDefault();"><img src="./content/media/users/100_13.jpg" title="" alt=""></a>' +
+            '<a href="$event.preventDefault();"><img src="./content/media/users/100_11.jpg" title="" alt=""></a>' +
+            '<a href="$event.preventDefault();"><img src="./content/media/users/100_14.jpg" title="" alt=""></a>'
         },
         {
           time: '14:00',

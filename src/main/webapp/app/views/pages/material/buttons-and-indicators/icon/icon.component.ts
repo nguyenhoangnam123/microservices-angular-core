@@ -68,6 +68,6 @@ export class IconComponent implements OnInit {
     this.exampleSVG = sVG;
   }
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon('exchange', sanitizer.bypassSecurityTrustResourceUrl('./assets/media/icons/exchange.svg'));
+    iconRegistry.addSvgIcon('exchange', sanitizer.bypassSecurityTrustResourceUrl('./content/media/icons/exchange.svg'));
   }
 }

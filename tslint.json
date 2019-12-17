@@ -1,8 +1,9 @@
 {
   "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
-    "directive-selector": [true, "attribute", "jhi", "camelCase"],
-    "component-selector": [true, "element", "jhi", "kebab-case"],
+    "no-consecutive-blank-lines": false,
+    "no-empty": false,
+    "interface-name": false,
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,
     "no-host-metadata-property": true,
