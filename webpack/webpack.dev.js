@@ -136,24 +136,11 @@ module.exports = options =>
           test: /\.scss$/,
           use: [
             'to-string-loader',
-            'css-loader',
-            {
-              loader: 'sass-loader',
-              options: { implementation: sass }
-            }
-          ],
-          exclude: /(style.angular\.scss)/
-        },
-        {
-          test: /\.scss$/,
-          use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
             {
               loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+              options: { implementation: sass }
             }
           ]
         },
