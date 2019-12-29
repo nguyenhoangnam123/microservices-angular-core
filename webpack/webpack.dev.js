@@ -45,7 +45,8 @@ module.exports = options =>
     output: {
       path: utils.root('target/classes/static/'),
       filename: 'app/[name].bundle.js',
-      chunkFilename: 'app/[id].chunk.js'
+      chunkFilename: 'app/[id].chunk.js',
+      publicPath: '/'
     },
     plugins: [
       process.env.JHI_DISABLE_WEBPACK_LOGS
@@ -87,7 +88,7 @@ module.exports = options =>
         title: 'JHipster',
         contentImage: path.join(__dirname, 'logo-jhipster.png')
       }),
-      //copy contnet to assests
+      //copy content to assests
       new CopyPlugin([
         {
           from: path.resolve(__dirname, './src/main/webapp/content'),
@@ -140,19 +141,30 @@ module.exports = options =>
             'css-loader',
             {
               loader: 'sass-loader',
-              options: { implementation: sass }
+              options: { implementation: sass, sourceMap: true }
             }
           ]
         },
         {
-          test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
-          loader: 'file-loader',
-          options: {
-            digest: 'hex',
-            hash: 'sha512',
-            name: 'content/[hash].[ext]'
-          }
+          test: /\.css$/,
+          use: [
+            {
+              loader: 'style-loader',
+              options: { injectType: 'singletonStyleTag' }
+            },
+            'css-loader'
+          ]
         }
+        // {
+        //   test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
+        //   loader: 'file-loader',
+        //   options: {
+        //     // digest: 'hex',
+        //     // hash: 'sha512',
+        //     name: '/content/[name].[ext]',
+        //     outputPath: 'fonts/'
+        //   }
+        // }
       ]
     },
     stats: process.env.JHI_DISABLE_WEBPACK_LOGS ? 'none' : options.stats,
