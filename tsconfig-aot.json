@@ -15,7 +15,8 @@
     "typeRoots": ["node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "app/*": ["src/main/webapp/app/*"]
+      "app/*": ["src/main/webapp/app/*"],
+      "content/*": ["src/main/webapp/content/*"]
     },
     "importHelpers": true
   },
