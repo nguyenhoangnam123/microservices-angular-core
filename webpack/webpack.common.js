@@ -35,7 +35,8 @@ module.exports = options => ({
         options: {
           digest: 'hex',
           hash: 'sha512',
-          name: 'content/[hash].[ext]'
+          name: '/content/[name].[ext]',
+          outputPath: 'fonts/'
         }
       },
       {
