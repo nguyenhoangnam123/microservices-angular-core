@@ -11,9 +11,10 @@ import { MailModule } from './apps/mail/mail.module';
 // import { ECommerceModule } from './apps/e-commerce/e-commerce.module';
 import { UserManagementModule } from './user-management/user-management.module';
 import { MyPageComponent } from './my-page/my-page.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [MyPageComponent],
+  declarations: [MyPageComponent, MenuComponent],
   exports: [],
   imports: [CommonModule, HttpClientModule, FormsModule, CoreModule, PartialsModule, MailModule, UserManagementModule],
   providers: []

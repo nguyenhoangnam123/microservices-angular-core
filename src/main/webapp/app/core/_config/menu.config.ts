@@ -741,6 +741,13 @@ export class MenuConfig {
               page: '/wizard/wizard-4'
             }
           ]
+        },
+        {
+          title: 'My Page', // <= Title of the page
+          desc: 'Some my description goes here', // <= Description of the page
+          root: true,
+          page: '/my-page', // <= URL
+          icon: 'flaticon-line-graph' // <= Choose the icon class
         }
       ]
     }

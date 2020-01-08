@@ -14,6 +14,7 @@ import { QueryParamsModel, QueryResultsModel, HttpUtilsService } from '../../_ba
 import { User } from '../_models/user.model';
 import { Permission } from '../_models/permission.model';
 import { Role } from '../_models/role.model';
+import { SERVER_API_URL } from 'app/app.constants';
 
 const API_USERS_URL = 'api/users';
 const API_PERMISSION_URL = 'api/permissions';
@@ -47,6 +48,15 @@ export class AuthService {
         return user;
       })
     );
+  }
+
+  loginService(email: string, password: string): Observable<any> {
+    const data = {
+      username: email,
+      password: password,
+      rememberMe: false
+    };
+    return this.http.post(SERVER_API_URL + 'auth/login', data, {});
   }
 
   register(user: User): Observable<any> {

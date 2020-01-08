@@ -1,6 +1,6 @@
-package com.gateway.config.oauth2;
+package com.egp.config.oauth2;
 
-import com.gateway.security.oauth2.OAuth2SignatureVerifierClient;
+import com.egp.security.oauth2.OAuth2SignatureVerifierClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.jwt.crypto.sign.SignatureVerifier;
@@ -11,7 +11,8 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import java.util.Map;
 
 /**
- * Improved {@link JwtAccessTokenConverter} that can handle lazy fetching of public verifier keys.
+ * Improved {@link JwtAccessTokenConverter} that can handle lazy fetching of
+ * public verifier keys.
  */
 public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
     private final Logger log = LoggerFactory.getLogger(OAuth2JwtAccessTokenConverter.class);
@@ -23,16 +24,17 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
      */
     private long lastKeyFetchTimestamp;
 
-    public OAuth2JwtAccessTokenConverter(OAuth2Properties oAuth2Properties, OAuth2SignatureVerifierClient signatureVerifierClient) {
+    public OAuth2JwtAccessTokenConverter(OAuth2Properties oAuth2Properties,
+            OAuth2SignatureVerifierClient signatureVerifierClient) {
         this.oAuth2Properties = oAuth2Properties;
         this.signatureVerifierClient = signatureVerifierClient;
         tryCreateSignatureVerifier();
     }
 
     /**
-     * Try to decode the token with the current public key.
-     * If it fails, contact the OAuth2 server to get a new public key, then try again.
-     * We might not have fetched it in the first place or it might have changed.
+     * Try to decode the token with the current public key. If it fails, contact the
+     * OAuth2 server to get a new public key, then try again. We might not have
+     * fetched it in the first place or it might have changed.
      *
      * @param token the JWT token to decode.
      * @return the resulting claims.
@@ -41,7 +43,7 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
     @Override
     protected Map<String, Object> decode(String token) {
         try {
-            //check if our public key and thus SignatureVerifier have expired
+            // check if our public key and thus SignatureVerifier have expired
             long ttl = oAuth2Properties.getSignatureVerification().getTtl();
             if (ttl > 0 && System.currentTimeMillis() - lastKeyFetchTimestamp > ttl) {
                 throw new InvalidTokenException("public key expired");
@@ -78,9 +80,10 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
         }
         return false;
     }
+
     /**
-     * Extract JWT claims and set it to OAuth2Authentication decoded details.
-     * Here is how to get details:
+     * Extract JWT claims and set it to OAuth2Authentication decoded details. Here
+     * is how to get details:
      *
      * <pre>
      * <code>
@@ -96,7 +99,8 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
      *      }
      *  }
      * </code>
-     *  </pre>
+     * </pre>
+     *
      * @param claims OAuth2JWTToken claims.
      * @return {@link OAuth2Authentication}.
      */

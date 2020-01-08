@@ -1,10 +1,10 @@
-package com.gateway.config.oauth2;
+package com.egp.config.oauth2;
 
-import com.gateway.security.oauth2.CookieTokenExtractor;
-import com.gateway.security.oauth2.OAuth2AuthenticationService;
-import com.gateway.security.oauth2.OAuth2CookieHelper;
-import com.gateway.security.oauth2.OAuth2TokenEndpointClient;
-import com.gateway.web.filter.RefreshTokenFilterConfigurer;
+import com.egp.security.oauth2.CookieTokenExtractor;
+import com.egp.security.oauth2.OAuth2AuthenticationService;
+import com.egp.security.oauth2.OAuth2CookieHelper;
+import com.egp.security.oauth2.OAuth2TokenEndpointClient;
+import com.egp.web.filter.RefreshTokenFilterConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -26,7 +26,8 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
     private final OAuth2TokenEndpointClient tokenEndpointClient;
     private final TokenStore tokenStore;
 
-    public OAuth2AuthenticationConfiguration(OAuth2Properties oAuth2Properties, OAuth2TokenEndpointClient tokenEndpointClient, TokenStore tokenStore) {
+    public OAuth2AuthenticationConfiguration(OAuth2Properties oAuth2Properties,
+            OAuth2TokenEndpointClient tokenEndpointClient, TokenStore tokenStore) {
         this.oAuth2Properties = oAuth2Properties;
         this.tokenEndpointClient = tokenEndpointClient;
         this.tokenStore = tokenStore;
@@ -34,16 +35,13 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            .antMatchers("/auth/login").permitAll()
-            .antMatchers("/auth/logout").authenticated()
-            .and()
-            .apply(refreshTokenSecurityConfigurerAdapter());
+        http.authorizeRequests().antMatchers("/auth/login").permitAll().antMatchers("/auth/logout").authenticated()
+                .and().apply(refreshTokenSecurityConfigurerAdapter());
     }
 
     /**
-     * A {@code SecurityConfigurerAdapter} to install a servlet filter that refreshes OAuth2 tokens.
+     * A {@code SecurityConfigurerAdapter} to install a servlet filter that
+     * refreshes OAuth2 tokens.
      */
     private RefreshTokenFilterConfigurer refreshTokenSecurityConfigurerAdapter() {
         return new RefreshTokenFilterConfigurer(uaaAuthenticationService(), tokenStore);
@@ -60,7 +58,8 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
     }
 
     /**
-     * Configure the ResourceServer security by installing a new {@link TokenExtractor}.
+     * Configure the ResourceServer security by installing a new
+     * {@link TokenExtractor}.
      */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -68,7 +67,8 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
     }
 
     /**
-     * The new {@link TokenExtractor} can extract tokens from Cookies and Authorization headers.
+     * The new {@link TokenExtractor} can extract tokens from Cookies and
+     * Authorization headers.
      *
      * @return the {@link CookieTokenExtractor} bean.
      */

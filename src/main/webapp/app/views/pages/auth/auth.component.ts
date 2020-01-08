@@ -30,9 +30,7 @@ export class AuthComponent implements OnInit {
     private el: ElementRef,
     private render: Renderer2,
     private layoutConfigService: LayoutConfigService,
-    public authNoticeService: AuthNoticeService,
-    private translationService: TranslationService,
-    private splashScreenService: SplashScreenService
+    public authNoticeService: AuthNoticeService // private splashScreenService: SplashScreenService // private translationService: TranslationService
   ) {}
 
   /**
@@ -43,10 +41,10 @@ export class AuthComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    this.translationService.setLanguage(this.translationService.getSelectedLanguage());
+    // this.translationService.setLanguage(this.translationService.getSelectedLanguage());
     this.headerLogo = this.layoutConfigService.getLogo();
 
-    this.splashScreenService.hide();
+    // this.splashScreenService.hide();
   }
 
   /**
