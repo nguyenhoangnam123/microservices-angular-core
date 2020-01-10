@@ -26,7 +26,7 @@ class CookiesHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
     /**
      * Return the modified cookies instead of the original ones.
-     * 
+     *
      * @return the modified cookies.
      */
     @Override

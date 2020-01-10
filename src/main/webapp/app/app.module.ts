@@ -56,6 +56,7 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 import { TestComponent } from './test/test.component';
+import { MenuComponent } from './src/main/webapp/app/views/pages/menu/menu.component';
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
   // initialize app by loading default demo layout config
@@ -114,7 +115,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
     LayoutUtilsService
   ],
   // declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent, TestComponent, MenuComponent],
   bootstrap: [AppComponent]
 })
 export class EGpAppModule {}

@@ -6,6 +6,8 @@ import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 //import base to alternate default main
 import { BaseComponent } from './views/theme/base/base.component';
 import { TestComponent } from './test/test.component';
+import { AuthGuard } from './core/auth';
+import { MyPageComponent } from './views/pages/my-page/my-page.component';
 // import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 // const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
@@ -23,11 +25,16 @@ const routes: Routes = [
   //   path: 'account',
   //   loadChildren: () => import('./account/account.module').then(m => m.EGpAccountModule)
   // },
+  { path: 'auth', loadChildren: () => import('app/views/pages/auth/auth.module').then(m => m.AuthModule) },
   {
     path: '',
     component: BaseComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
+      {
+        path: 'my-page', // <= Page URL
+        component: MyPageComponent // <= Page component registration
+      },
       {
         path: 'dashboard',
         loadChildren: () => import('app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule)

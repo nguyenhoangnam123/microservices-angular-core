@@ -100,7 +100,7 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
      *  }
      * </code>
      * </pre>
-     * 
+     *
      * @param claims OAuth2JWTToken claims.
      * @return {@link OAuth2Authentication}.
      */

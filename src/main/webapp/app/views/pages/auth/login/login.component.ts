@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         DEMO_PARAMS.EMAIL,
         Validators.compose([
           Validators.required,
-          Validators.email,
+          // Validators.email,
           Validators.minLength(3),
           Validators.maxLength(320) // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
         ])
@@ -135,7 +135,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: controls.password.value
     };
     this.auth
-      .login(authData.email, authData.password)
+      .loginService(authData.email, authData.password)
       .pipe(
         tap(user => {
           if (user) {
@@ -161,12 +161,13 @@ export class LoginComponent implements OnInit, OnDestroy {
    * @param validationType: string => Equals to valitors name
    */
   isControlHasError(controlName: string, validationType: string): boolean {
-    const control = this.loginForm.controls[controlName];
-    if (!control) {
-      return false;
-    }
+    // const control = this.loginForm.controls[controlName];
+    // if (!control) {
+    //   return false;
+    // }
 
-    const result = control.hasError(validationType) && (control.dirty || control.touched);
-    return result;
+    // const result = control.hasError(validationType) && (control.dirty || control.touched);
+    // return result;
+    return false;
   }
 }
