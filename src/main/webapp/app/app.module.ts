@@ -47,7 +47,8 @@ import {
   MenuHorizontalService,
   PageConfigService,
   SplashScreenService,
-  SubheaderService
+  SubheaderService,
+  MenuService
 } from './core/_base/layout';
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
@@ -56,7 +57,6 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 import { TestComponent } from './test/test.component';
-import { MenuComponent } from './src/main/webapp/app/views/pages/menu/menu.component';
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
   // initialize app by loading default demo layout config
@@ -94,6 +94,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
     PageConfigService,
     KtDialogService,
     DataTableService,
+    MenuService,
     SplashScreenService,
     {
       provide: HAMMER_GESTURE_CONFIG,
@@ -115,7 +116,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
     LayoutUtilsService
   ],
   // declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
-  declarations: [AppComponent, TestComponent, MenuComponent],
+  declarations: [AppComponent, TestComponent],
   bootstrap: [AppComponent]
 })
 export class EGpAppModule {}

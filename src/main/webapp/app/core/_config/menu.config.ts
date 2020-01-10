@@ -748,6 +748,13 @@ export class MenuConfig {
           root: true,
           page: '/my-page', // <= URL
           icon: 'flaticon-line-graph' // <= Choose the icon class
+        },
+        {
+          title: 'Menu', // <= Title of the page
+          desc: 'Resource config for menu', // <= Description of the page
+          root: true,
+          page: '/menu', // <= URL
+          icon: 'flaticon-line-graph' // <= Choose the icon class
         }
       ]
     }

@@ -8,6 +8,7 @@ import { BaseComponent } from './views/theme/base/base.component';
 import { TestComponent } from './test/test.component';
 import { AuthGuard } from './core/auth';
 import { MyPageComponent } from './views/pages/my-page/my-page.component';
+import { MenuComponent } from './views/pages/menu/menu.component';
 // import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 // const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
@@ -31,6 +32,10 @@ const routes: Routes = [
     component: BaseComponent,
     canActivate: [AuthGuard],
     children: [
+      {
+        path: 'menu', // <= Page URL
+        component: MenuComponent // <= Page component registration
+      },
       {
         path: 'my-page', // <= Page URL
         component: MyPageComponent // <= Page component registration

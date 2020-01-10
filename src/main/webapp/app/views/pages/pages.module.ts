@@ -12,11 +12,25 @@ import { MailModule } from './apps/mail/mail.module';
 import { UserManagementModule } from './user-management/user-management.module';
 import { MyPageComponent } from './my-page/my-page.component';
 import { MenuComponent } from './menu/menu.component';
+import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [MyPageComponent, MenuComponent],
   exports: [],
-  imports: [CommonModule, HttpClientModule, FormsModule, CoreModule, PartialsModule, MailModule, UserManagementModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    CoreModule,
+    PartialsModule,
+    MailModule,
+    UserManagementModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatIconModule
+  ],
   providers: []
 })
 export class PagesModule {}

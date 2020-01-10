@@ -16,6 +16,7 @@ export { ExternalCodeExample } from './models/external-code-example';
 export { OffcanvasOptions } from './directives/offcanvas.directive';
 export { ScrollTopOptions } from './directives/scroll-top.directive';
 export { ToggleOptions } from './directives/toggle.directive';
+export { MenuItem } from './models/menu.model';
 
 export { LayoutConfigModel } from './models/layout-config.model';
 export { MenuOptions } from './directives/menu.directive';
@@ -30,6 +31,7 @@ export { TimeElapsedPipe } from './pipes/time-elapsed.pipe';
 // Services
 export { DataTableService } from './services/datatable.service';
 export { TranslationService } from './services/translation.service';
+export { MenuService } from './services/menu.service';
 
 export { LayoutConfigService } from './services/layout-config.service';
 export { LayoutRefService } from './services/layout-ref.service';
