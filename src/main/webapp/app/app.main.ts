@@ -9,6 +9,7 @@ import 'content/plugins/line-awesome/css/line-awesome.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'socicon/css/socicon.css';
 import '../content/scss/styles.scss';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 ProdConfig();
 

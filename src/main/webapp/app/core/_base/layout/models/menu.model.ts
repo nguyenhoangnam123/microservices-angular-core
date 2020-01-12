@@ -10,4 +10,22 @@ export class MenuItem {
   displayOrder: number;
   isShow: boolean;
   isDeleted: boolean;
+  createdBy: string;
+  createdDate: Date;
+  lastModifiedBy: string;
+  lastModifiedDate: Date;
+
+  clear(): void {
+    this.id = undefined;
+    this.code = '';
+    this.name = '';
+    this.description = '';
+    this.menuIconCss = '';
+    this.url = '';
+    this.path = '';
+    this.parentId = undefined;
+    this.displayOrder = undefined;
+    this.isShow = false;
+    this.isDeleted = false;
+  }
 }

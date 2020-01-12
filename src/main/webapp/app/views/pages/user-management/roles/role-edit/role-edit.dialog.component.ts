@@ -233,7 +233,6 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
         if (!res) {
           return;
         }
-
         this.viewLoading = false;
         this.dialogRef.close({
           _role,

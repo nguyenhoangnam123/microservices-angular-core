@@ -26,11 +26,25 @@ export class MenuService {
    */
   getAllItems(): Observable<MenuItem[]> {
     const API_MENU_URL = SERVER_API_URL + 'services/uaa/api/menus';
-    return this.http.get<MenuItem[]>(API_MENU_URL);
+    return this.http.get<MenuItem[]>(API_MENU_URL, httpOptions);
   }
 
-  deleteMenu(id: string): Observable<MenuItem> {
+  deleteItem(id: number): Observable<MenuItem> {
     const API_DELETE_MENU_URL = SERVER_API_URL + `services/uaa/api/menus/${id}`;
     return this.http.delete<MenuItem>(API_DELETE_MENU_URL, httpOptions);
+  }
+
+  createOrUpdateItem(menu: MenuItem): Observable<MenuItem> {
+    const API_CREATE_MENU_URL = SERVER_API_URL + `services/uaa/api/menus`;
+    if (menu.id > 0) {
+      return this.http.put<MenuItem>(API_CREATE_MENU_URL, menu, httpOptions);
+    } else {
+      return this.http.post<MenuItem>(API_CREATE_MENU_URL, menu, httpOptions);
+    }
+  }
+
+  findById(id: number): Observable<MenuItem> {
+    const API_GETBYID_MENU_URL = SERVER_API_URL + `services/uaa/api/menus/${id}`;
+    return this.http.get<MenuItem>(API_GETBYID_MENU_URL, httpOptions);
   }
 }

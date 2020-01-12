@@ -13,9 +13,10 @@ import { UserManagementModule } from './user-management/user-management.module';
 import { MyPageComponent } from './my-page/my-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortModule, MatIconModule } from '@angular/material';
+import { MenuModule } from './menu/menu.module';
 
 @NgModule({
-  declarations: [MyPageComponent, MenuComponent],
+  declarations: [MyPageComponent],
   exports: [],
   imports: [
     CommonModule,
@@ -29,7 +30,8 @@ import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortMo
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MenuModule
   ],
   providers: []
 })

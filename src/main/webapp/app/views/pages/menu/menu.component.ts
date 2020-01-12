@@ -8,9 +8,10 @@ import { merge } from 'rxjs';
 import { QueryParamsModel } from '../../../core/_base/crud';
 import { MenuItem, MenuService } from '../../../core/_base/layout';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
 // Services
 import { LayoutUtilsService, MessageType } from '../../../core/_base/crud';
+import { MenuEditDialogComponent } from './menu-edit/menu-edit.dialog.component';
 
 @Component({
   selector: 'jhi-menu',
@@ -32,7 +33,12 @@ export class MenuComponent implements OnInit {
    * @param menuService: DataTableService
    * @param layoutUtilsService: LayoutUtilsService
    */
-  constructor(private menuService: MenuService, private layoutUtilsService: LayoutUtilsService) {}
+  constructor(
+    private menuService: MenuService,
+    private layoutUtilsService: LayoutUtilsService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     // If the user changes the sort order, reset back to the first page.
@@ -52,6 +58,10 @@ export class MenuComponent implements OnInit {
 
     // Init DataSource
     this.dataSource = new MenuDataSource(this.menuService);
+    //subcribe deleteSucessfully, refresh list when subscribe
+    this.dataSource.deleteSuccess$.subscribe(() => {
+      this.loadItems(true);
+    });
     // First load
     this.loadItems(true);
   }
@@ -80,10 +90,30 @@ export class MenuComponent implements OnInit {
       if (!res) {
         return;
       }
-
+      this.dataSource.deleteItem(_item.id);
       //show message confirm that item is deleted completely
       this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
       //load new items
+    });
+  }
+
+  createMenu() {
+    const menu = new MenuItem();
+    menu.clear();
+    this.editMenu(menu);
+  }
+
+  editMenu(_menu: MenuItem) {
+    const _saveMessage = `Menu successfully has been saved.`;
+    const _messageType = _menu.id ? MessageType.Update : MessageType.Create;
+    const dialogRef = this.dialog.open(MenuEditDialogComponent, { data: { menuId: _menu.id } });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (!res) {
+        return;
+      }
+
+      this.layoutUtilsService.showActionNotification(_saveMessage, _messageType, 10000, true, true);
       this.loadItems(true);
     });
   }

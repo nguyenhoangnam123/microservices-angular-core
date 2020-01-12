@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PartialsModule } from 'app/views/partials/partials.module';
 import { LayoutUtilsService } from 'app/core/_base/crud';
-import { ActionNotificationComponent } from 'app/views/partials/content/crud';
-import { RoleEditDialogComponent } from '../user-management/roles/role-edit/role-edit.dialog.component';
+import { ActionNotificationComponent, DeleteEntityDialogComponent } from 'app/views/partials/content/crud';
+// NGRX
+import { StoreModule } from '@ngrx/store';
+
 import { MenuComponent } from './menu.component';
 import {
   MatButtonModule,
@@ -30,11 +32,19 @@ import {
   MatTooltipModule,
   MatDialogModule
 } from '@angular/material';
+import { MenuEditDialogComponent } from './menu-edit/menu-edit.dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { usersReducer, UserEffects } from 'app/core/auth';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    StoreModule.forFeature('users', usersReducer),
+    EffectsModule.forFeature([UserEffects]),
+    FormsModule,
+    ReactiveFormsModule,
     PartialsModule,
     MatButtonModule,
     MatMenuModule,
@@ -59,7 +69,7 @@ import {
     MatDialogModule
   ],
   providers: [LayoutUtilsService],
-  entryComponents: [ActionNotificationComponent, RoleEditDialogComponent],
-  declarations: [MenuComponent]
+  entryComponents: [ActionNotificationComponent, MenuEditDialogComponent, DeleteEntityDialogComponent],
+  declarations: [MenuComponent, MenuEditDialogComponent]
 })
 export class MenuModule {}
