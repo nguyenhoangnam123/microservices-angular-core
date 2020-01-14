@@ -131,7 +131,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     this.filterMenus = this.menuForm.controls.parent.valueChanges.pipe(
       startWith<string | MenuItem>(this.menuParentItem ? this.menuParentItem : ''),
       map(value => (typeof value === 'string' ? value : (<any>value).name)),
-      map(name => (name ? this._filter(name) : this.menuList.slice()))
+      map(name => (name ? this._filter(name) : this.menuList.slice().filter(option => option.id != this.menuItem.id)))
     );
   }
 
@@ -149,6 +149,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     _menu.path = controls.path.value ? controls.path.value : '';
     _menu.parentId = controls.parent.value ? controls.parent.value.id : '';
     _menu.displayOrder = controls.displayOrder.value;
+    _menu.isDeleted = this.menuItem.isDeleted;
     return _menu;
   }
 
@@ -219,6 +220,8 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
   private _filter(name): MenuItem[] {
     const filterValue = name.toLowerCase();
 
-    return this.menuList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.menuList
+      .filter(option => option.id != this.menuItem.id)
+      .filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }
