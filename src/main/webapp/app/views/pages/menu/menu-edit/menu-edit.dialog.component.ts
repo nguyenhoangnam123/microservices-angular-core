@@ -8,8 +8,9 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from 'app/core/reducers';
 import { User, currentUser } from 'app/core/auth';
 import { MenuDataSource } from '../menu.data-source';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { startWith, map, tap, concatMap } from 'rxjs/operators';
+import { ValidParentMenuValidator } from '../menu.validator';
 
 @Component({
   selector: 'kt-menu-edit-dialog',
@@ -117,15 +118,20 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
    * Create form
    */
   createForm() {
-    this.menuForm = this.menuFB.group({
-      name: [this.menuItem.name, Validators.required],
-      description: [this.menuItem.description],
-      menuIconCss: [this.menuItem.menuIconCss],
-      url: [this.menuItem.url],
-      path: [this.menuItem.path],
-      parent: [this.menuParentItem],
-      displayOrder: [this.menuItem.displayOrder, Validators.required]
-    });
+    this.menuForm = this.menuFB.group(
+      {
+        name: [this.menuItem.name, Validators.required],
+        description: [this.menuItem.description],
+        menuIconCss: [this.menuItem.menuIconCss],
+        url: [this.menuItem.url],
+        path: [this.menuItem.path],
+        parent: [this.menuParentItem],
+        displayOrder: [this.menuItem.displayOrder, Validators.required]
+      },
+      {
+        validator: ValidParentMenuValidator(this.menuList)
+      }
+    );
 
     //create autocomplete data
     this.filterMenus = this.menuForm.controls.parent.valueChanges.pipe(
@@ -224,4 +230,17 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
       .filter(option => option.id != this.menuItem.id)
       .filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
+
+  // validateParentMenu(control: AbstractControl) {
+  //   //parentMenu
+  //   const parentMenu = control.get('parent').value;
+  //   //menuListId
+  //   const menuListId = this.menuList.map(option => option.id);
+  //   //if parentMenu not null and not indexed in list id, return error
+  //   if (parentMenu && !menuListId.includes(parentMenu.id)) {
+  //     control.get('parent').setErrors({ parentMenu: true });
+  //   } else {
+  //     return;
+  //   }
+  // }
 }

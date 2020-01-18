@@ -65,6 +65,9 @@
                 <div class="col-md-6 kt-margin-bottom-10-mobile">
                   <mat-form-field class="mat-form-field-fluid">
                     <input matInput placeholder="parent" formControlName="parent" [matAutocomplete]="Parent" />
+                    <mat-error *ngIf="menuForm.get('parent').errors && menuForm.get('parent').errors.parentMenu">
+                      <strong>Parent menu didn't match any existing menu.</strong>
+                    </mat-error>
                     <mat-autocomplete #Parent="matAutocomplete" [displayWith]="displayFn">
                       <mat-option *ngFor="let menu of filterMenus | async" [value]="menu">
                         {{ menu.name }}
