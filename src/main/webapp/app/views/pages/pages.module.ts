@@ -11,9 +11,9 @@ import { MailModule } from './apps/mail/mail.module';
 // import { ECommerceModule } from './apps/e-commerce/e-commerce.module';
 import { UserManagementModule } from './user-management/user-management.module';
 import { MyPageComponent } from './my-page/my-page.component';
-import { MenuComponent } from './menu/menu.component';
 import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortModule, MatIconModule } from '@angular/material';
 import { MenuModule } from './menu/menu.module';
+import { ZoneModule } from './zone/zone.module';
 
 @NgModule({
   declarations: [MyPageComponent],
@@ -31,7 +31,8 @@ import { MenuModule } from './menu/menu.module';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MenuModule
+    MenuModule,
+    ZoneModule
   ],
   providers: []
 })

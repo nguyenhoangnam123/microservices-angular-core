@@ -57,6 +57,7 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 import { TestComponent } from './test/test.component';
+import { ZoneService } from './views/pages/zone/zone.service';
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
   // initialize app by loading default demo layout config
@@ -95,6 +96,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
     KtDialogService,
     DataTableService,
     MenuService,
+    ZoneService,
     SplashScreenService,
     {
       provide: HAMMER_GESTURE_CONFIG,

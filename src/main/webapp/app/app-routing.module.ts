@@ -9,6 +9,7 @@ import { TestComponent } from './test/test.component';
 import { AuthGuard } from './core/auth';
 import { MyPageComponent } from './views/pages/my-page/my-page.component';
 import { MenuComponent } from './views/pages/menu/menu.component';
+import { ZoneComponent } from './views/pages/zone/zone.component';
 // import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 // const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'menu', // <= Page URL
         component: MenuComponent // <= Page component registration
+      },
+      {
+        path: 'zone', // <= Page URL
+        component: ZoneComponent // <= Page component registration
       },
       {
         path: 'my-page', // <= Page URL

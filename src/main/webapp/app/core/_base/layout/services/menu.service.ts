@@ -21,9 +21,6 @@ export class MenuService {
    */
   constructor(private http: HttpClient) {}
 
-  /**
-   * Returns data from fake server
-   */
   getAllItems(): Observable<MenuItem[]> {
     const API_MENU_URL = SERVER_API_URL + 'services/uaa/api/menus';
     return this.http.get<MenuItem[]>(API_MENU_URL, httpOptions);
