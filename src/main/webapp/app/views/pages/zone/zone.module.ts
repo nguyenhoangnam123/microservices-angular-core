@@ -8,6 +8,7 @@ import { usersReducer, UserEffects } from 'app/core/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PartialsModule } from 'app/views/partials/partials.module';
+import { ActionNotificationComponent, DeleteEntityDialogComponent } from 'app/views/partials/content/crud';
 import {
   MatButtonModule,
   MatMenuModule,
@@ -31,6 +32,7 @@ import {
   MatTooltipModule,
   MatDialogModule
 } from '@angular/material';
+import { ZoneEditDialogComponent } from './zone-edit/zone-edit.component';
 
 @NgModule({
   imports: [
@@ -63,8 +65,8 @@ import {
     MatTooltipModule,
     MatDialogModule
   ],
-  declarations: [ZoneComponent],
-  entryComponents: [],
+  declarations: [ZoneComponent, ZoneEditDialogComponent],
+  entryComponents: [DeleteEntityDialogComponent, ActionNotificationComponent, ZoneEditDialogComponent],
   providers: [LayoutUtilsService]
 })
 export class ZoneModule {}

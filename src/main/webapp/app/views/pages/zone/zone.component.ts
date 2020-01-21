@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ZoneService } from './zone.service';
-import { LayoutUtilsService, QueryParamsModel } from 'app/core/_base/crud';
+import { LayoutUtilsService, QueryParamsModel, MessageType } from 'app/core/_base/crud';
 import { MatDialog, MatSnackBar, MatPaginator, MatSort } from '@angular/material';
 import { ZoneDataSource } from './zone.data-source';
 import { merge } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Zone } from './zone.model';
 import { tap } from 'rxjs/operators';
+import { ZoneEditDialogComponent } from './zone-edit/zone-edit.component';
 
 @Component({
   selector: 'jhi-zone',
@@ -60,7 +61,23 @@ export class ZoneComponent implements OnInit {
     this.dataSource.loadItems(queryParams);
     this.selection.clear();
   }
-  createZone() {}
-  editZone() {}
+  createZone() {
+    const zone = new Zone();
+    zone.clear();
+    this.editZone(zone);
+  }
+  editZone(_zone: Zone) {
+    const _saveMessage = `Zone successfully has been saved.`;
+    const _messageType = _zone.id ? MessageType.Update : MessageType.Create;
+    const dialogRef = this.dialog.open(ZoneEditDialogComponent, { data: { zoneId: _zone.id } });
+    dialogRef.afterClosed().subscribe(res => {
+      if (!res) {
+        return;
+      }
+
+      this.layoutUtilsService.showActionNotification(_saveMessage, _messageType, 10000, true, true);
+      this.loadItems(true);
+    });
+  }
   deleteZone() {}
 }
