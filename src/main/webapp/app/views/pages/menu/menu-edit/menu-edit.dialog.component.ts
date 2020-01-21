@@ -136,8 +136,8 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     //create autocomplete data
     this.filterMenus = this.menuForm.controls.parent.valueChanges.pipe(
       startWith<string | MenuItem>(this.menuParentItem ? this.menuParentItem : ''),
-      map(value => (typeof value === 'string' ? value : (<any>value).name)),
-      map(name => (name ? this._filter(name) : this.menuList.slice().filter(option => option.id != this.menuItem.id)))
+      map(value => (typeof value === 'string' ? value : (value as any).name)),
+      map(name => (name ? this._filter(name) : this.menuList.slice().filter(option => option.id !== this.menuItem.id)))
     );
   }
 
@@ -227,20 +227,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     const filterValue = name.toLowerCase();
 
     return this.menuList
-      .filter(option => option.id != this.menuItem.id)
+      .filter(option => option.id !== this.menuItem.id)
       .filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
-
-  // validateParentMenu(control: AbstractControl) {
-  //   //parentMenu
-  //   const parentMenu = control.get('parent').value;
-  //   //menuListId
-  //   const menuListId = this.menuList.map(option => option.id);
-  //   //if parentMenu not null and not indexed in list id, return error
-  //   if (parentMenu && !menuListId.includes(parentMenu.id)) {
-  //     control.get('parent').setErrors({ parentMenu: true });
-  //   } else {
-  //     return;
-  //   }
-  // }
 }
