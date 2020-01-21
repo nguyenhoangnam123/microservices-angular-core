@@ -76,7 +76,7 @@ export class PageConfigService {
       url = urls.join('/');
     }
 
-    if (url.charAt(0) == '/') {
+    if (url.charAt(0) === '/') {
       url = url.substr(1);
     }
 
