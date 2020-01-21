@@ -9,6 +9,7 @@ export interface IBase {
 }
 
 export abstract class Base implements IBase {
+  constructor();
   constructor(
     public dateCreated?: Moment,
     public dateUpdated?: Moment,
