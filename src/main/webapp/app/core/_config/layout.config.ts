@@ -10,9 +10,9 @@ export class LayoutConfig {
         'background-image': './content/media/misc/bg-1.jpg'
       },
       logo: {
-        dark: './content/media/logos/logo-light.png',
+        dark: './content/media/logos/FPT_New_Logo.png', // === new logo for FPT
         light: './content/media/logos/logo-dark.png',
-        brand: './content/media/logos/logo-light.png',
+        brand: './content/media/logos/FPT_New_Logo.png',
         green: './content/media/logos/logo-light.png'
       }
     },
