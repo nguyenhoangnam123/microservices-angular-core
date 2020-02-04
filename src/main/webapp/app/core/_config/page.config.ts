@@ -232,7 +232,9 @@ export class PageConfig {
       'wizard-2': { page: { title: 'Wizard 2', desc: '' } },
       'wizard-3': { page: { title: 'Wizard 3', desc: '' } },
       'wizard-4': { page: { title: 'Wizard 4', desc: '' } }
-    }
+    },
+    menu: { page: { title: 'Menu', desc: '' } },
+    zone: { page: { title: 'Zone', desc: '' } }
   };
 
   public get configs(): any {
