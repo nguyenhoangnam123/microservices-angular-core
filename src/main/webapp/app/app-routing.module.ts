@@ -5,7 +5,6 @@ import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 // import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
 //import base to alternate default main
 import { BaseComponent } from './views/theme/base/base.component';
-import { TestComponent } from './test/test.component';
 import { AuthGuard } from './core/auth';
 import { MyPageComponent } from './views/pages/my-page/my-page.component';
 import { MenuComponent } from './views/pages/menu/menu.component';
@@ -72,10 +71,6 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
-  },
-  {
-    path: 'test',
-    component: TestComponent
   }
   // ...LAYOUT_ROUTES
 ];

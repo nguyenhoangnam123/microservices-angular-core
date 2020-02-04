@@ -56,7 +56,6 @@ import { AuthService } from './core/auth';
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
-import { TestComponent } from './test/test.component';
 import { ZoneService } from './views/pages/zone/zone.service';
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
@@ -118,7 +117,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
     LayoutUtilsService
   ],
   // declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class EGpAppModule {}

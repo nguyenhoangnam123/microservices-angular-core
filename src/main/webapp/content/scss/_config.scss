@@ -71,8 +71,9 @@ $kt-state-colors: (
   // Metronic states
     brand:
     (
-      base: #5d78ff,
-      inverse: #ffffff
+      base: #0d69b3,
+      //#5867ff
+        inverse: #ffffff //#ffffff
     ),
   light: (
     base: #ffffff,
@@ -84,7 +85,8 @@ $kt-state-colors: (
   ),
   primary: (
     base: #5867dd,
-    inverse: #ffffff
+    //#5867dd
+      inverse: #ffffff
   ),
   success: (
     base: #0abb87,

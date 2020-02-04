@@ -26,9 +26,9 @@ body {
     }
 
     // Fixed Content Head
-    .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled & {
-      padding-top: kt-get($kt-header-config, base, desktop, default, height) + kt-get($kt-subheader-config, fixed, height);
-    }
+    // .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled & {
+    //   padding-top: kt-get($kt-header-config, base, desktop, default, height) + kt-get($kt-subheader-config, fixed, height);
+    // }
 
     // Fixed Aside
     .kt-aside--fixed & {
@@ -48,7 +48,8 @@ body {
     .kt-header--fixed.kt-subheader--fixed & {
       position: fixed;
       height: kt-get($kt-subheader-config, fixed, height);
-      top: kt-get($kt-header-config, base, desktop, default, height);
+      // top: kt-get($kt-header-config, base, desktop, default, height);
+      top: 0;
       left: 0;
       right: 0;
       transition: all 0.3s ease;

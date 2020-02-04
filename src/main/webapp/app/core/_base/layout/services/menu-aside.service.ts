@@ -25,7 +25,7 @@ export class MenuAsideService {
    * Load menu list
    */
   loadMenu() {
-    // get menu list
+    // get menu list, replace get Menu by file by get menu by api
     const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), 'aside.items');
     this.menuList$.next(menuItems);
   }
