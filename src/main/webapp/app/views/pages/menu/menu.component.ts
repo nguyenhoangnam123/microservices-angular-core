@@ -1,9 +1,9 @@
 // Angular
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MenuDataSource } from './menu.data-source';
 // RXJS
-import { tap } from 'rxjs/operators';
-import { merge } from 'rxjs';
+import { tap, startWith, map } from 'rxjs/operators';
+import { merge, Observable, Subscription } from 'rxjs';
 // Crud
 import { QueryParamsModel } from '../../../core/_base/crud';
 import { MenuItem, MenuService } from '../../../core/_base/layout';
@@ -12,19 +12,24 @@ import { MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material
 // Services
 import { LayoutUtilsService, MessageType } from '../../../core/_base/crud';
 import { MenuEditDialogComponent } from './menu-edit/menu-edit.dialog.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidParentMenuValidator } from './menu.validator';
 
 @Component({
   selector: 'jhi-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   dataSource: MenuDataSource;
   displayedColumns = ['id', 'name', 'actions'];
+  menuSearchForm: FormGroup;
   count: number;
-
+  menuList: MenuItem[];
+  filterMenus: Observable<MenuItem[]>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  private subscriptions: Subscription[] = [];
 
   selection = new SelectionModel<MenuItem>(true, []);
   /**
@@ -37,10 +42,11 @@ export class MenuComponent implements OnInit {
     private menuService: MenuService,
     private layoutUtilsService: LayoutUtilsService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private menuFB: FormBuilder
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
@@ -48,7 +54,7 @@ export class MenuComponent implements OnInit {
 		- when a pagination event occurs => this.paginator.page
 		- when a sort event occurs => this.sort.sortChange
 		**/
-    merge(this.sort.sortChange, this.paginator.page)
+    const sortAndPagingSubcription = merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         tap(() => {
           this.loadItems();
@@ -58,12 +64,31 @@ export class MenuComponent implements OnInit {
 
     // Init DataSource
     this.dataSource = new MenuDataSource(this.menuService);
-    //subcribe deleteSucessfully, refresh list when subscribe
+    // Subcribe deleteSucessfully, refresh list when subscribe
     this.dataSource.deleteSuccess$.subscribe(() => {
       this.loadItems(true);
     });
     // First load
     this.loadItems(true);
+    // Subcribe getMenu List
+    this.menuService
+      .getAllItems()
+      .pipe(
+        tap(res => {
+          if (!res) {
+            return;
+          }
+          this.menuList = res;
+        })
+      )
+      .subscribe(() => this.createForm());
+
+    // this.subscriptions.push(menuListSubcription);
+    this.subscriptions.push(sortAndPagingSubcription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sb => sb.unsubscribe());
   }
 
   loadItems(firstLoad: boolean = false) {
@@ -93,8 +118,28 @@ export class MenuComponent implements OnInit {
       this.dataSource.deleteItem(_item.id);
       //show message confirm that item is deleted completely
       this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
-      //load new items
     });
+  }
+
+  createForm() {
+    // Init menuSearchForm
+    this.menuSearchForm = this.menuFB.group(
+      {
+        name: ['', Validators.maxLength(5)],
+        url: ['', Validators.maxLength(5)],
+        parent: ['']
+      },
+      {
+        validator: ValidParentMenuValidator(this.menuList)
+      }
+    );
+
+    // Filtermenus
+    this.filterMenus = this.menuSearchForm.controls.parent.valueChanges.pipe(
+      startWith<string | MenuItem>(''),
+      map(value => (typeof value === 'string' ? value : (value as any).name)),
+      map(name => (name ? this._filter(name) : this.menuList.slice()))
+    );
   }
 
   createMenu() {
@@ -116,5 +161,33 @@ export class MenuComponent implements OnInit {
       this.layoutUtilsService.showActionNotification(_saveMessage, _messageType, 10000, true, true);
       this.loadItems(true);
     });
+  }
+
+  /**
+   * Clear form search
+   */
+  onCancel() {
+    this.menuSearchForm.reset();
+  }
+
+  /**
+   * Submit form search
+   */
+  searchMenu(searchObj) {}
+
+  /**
+   * Display autocomplete on parent values changed
+   */
+  displayFn(menu?: MenuItem): string | undefined {
+    return menu ? menu.name : undefined;
+  }
+
+  /**
+   * Filter values from input changed
+   */
+  private _filter(name): MenuItem[] {
+    const filterValue = name.toLowerCase();
+
+    return this.menuList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }

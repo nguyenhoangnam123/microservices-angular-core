@@ -11,20 +11,7 @@
 
   <kt-portlet-body>
     <!-- start::FILTERS & GROUP ACTIONS -->
-    <div class="kt-form kt-margin-b-30">
-      <!-- start::FILTERS -->
-      <div class="kt-form__filtration">
-        <div class="row align-items-center">
-          <div class="col-md-2 kt-margin-bottom-10-mobile">
-            <mat-form-field class="mat-form-field-fluid">
-              <mat-label>Tên Menu</mat-label>
-              <input matInput placeholder="Search user" #searchInput placeholder="Nhập vào tên Menu" />
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <!-- end::FILTERS -->
-
+    <div class="kt-form">
       <!-- start::GROUP ACTIONS -->
       <!-- Group actions list: 'Delete selected' | 'Fetch selected' | 'Update status for selected' -->
       <!-- Group actions are shared for all LISTS -->
@@ -55,6 +42,62 @@
       <!-- end::GROUP ACTIONS -->
     </div>
     <!-- end::FILTERS & GROUP ACTIONS -->
+    <div class="kt-portlet__preview kt-margin-b-30">
+      <div class="kt-section__content">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Tìm kiếm menu
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- form begin -->
+            <form [formGroup]="menuSearchForm" class="kt-form" novalidate (ngSubmit)="searchMenu(menuSearchForm.value)">
+              <div class="kt-form__group">
+                <div class="row">
+                  <div class="col-md-6 kt-margin-bottom-10-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                      <mat-label>Tên Menu</mat-label>
+                      <input matInput placeholder="Nhập vào tên Menu" formControlName="name" id="name" />
+                      <mat-error>Tên menu không quá 100 kí tự</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 kt-margin-bottom-10-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                      <mat-label>Đường dẫn</mat-label>
+                      <input matInput placeholder="Nhập vào đường dẫn" formControlName="url" id="url" />
+                      <mat-error>đường dẫn không quá 60 kí tự</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="kt-form__group">
+                <div class="row">
+                  <div class="col-md-6 kt-margin-bottom-10-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                      <input matInput placeholder="Menu cha" formControlName="parent" [matAutocomplete]="Parent" />
+                      <mat-error *ngIf="menuSearchForm.get('parent').errors && menuSearchForm.get('parent').errors.parentMenu">
+                        <strong>Không tồn tại menu theo yêu cầu</strong>
+                      </mat-error>
+                      <mat-autocomplete #Parent="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let menu of filterMenus | async" [value]="menu">
+                          {{ menu.name }}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="kt-form__group--inline">
+                <button mat-raised-button color="primary" [disabled]="!menuSearchForm.valid">Tìm kiếm</button>
+                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Đặt lại</button>
+              </div>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
 
     <!-- See off.documentations 'https://material.angular.io/components/table/overview' -->
     <div
