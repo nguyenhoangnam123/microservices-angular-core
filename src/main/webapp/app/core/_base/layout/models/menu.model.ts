@@ -12,7 +12,7 @@ export class MenuItem {
   isDeleted: boolean;
   createdBy: string;
   createdDate: Date;
-  updateBy: string;
+  updatedBy: string;
   dateUpdated?: Date;
 
   clear(): void {
