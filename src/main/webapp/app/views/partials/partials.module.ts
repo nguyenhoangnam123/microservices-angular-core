@@ -25,6 +25,7 @@ import {
   MatTabsModule,
   MatTooltipModule
 } from '@angular/material';
+import { IconPickerModule } from 'ngx-icon-picker';
 // NgBootstrap
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 // Perfect Scrollbar
@@ -180,7 +181,7 @@ import { CartComponent } from './layout/topbar/cart/cart.component';
     MatTabsModule,
     MatTooltipModule,
     MatDialogModule,
-
+    IconPickerModule,
     // ng-bootstrap modules
     NgbDropdownModule,
     NgbTabsetModule,
