@@ -2,7 +2,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
-import { GestureConfig } from '@angular/material';
+import { GestureConfig, MatPaginatorIntl } from '@angular/material';
 // Hammer JS
 import 'hammerjs';
 // NGX Permissions
@@ -57,6 +57,7 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 import { ZoneService } from './views/pages/zone/zone.service';
+import { MatPaginatorIntlCro } from './core/language/MatPaginatorIntlCro';
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
   // initialize app by loading default demo layout config
@@ -108,6 +109,7 @@ export function initializeLayoutConfig(appConfig: LayoutConfigService) {
       deps: [LayoutConfigService],
       multi: true
     },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
     // template services
     SubheaderService,
     MenuHorizontalService,

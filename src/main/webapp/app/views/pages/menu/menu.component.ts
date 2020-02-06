@@ -127,7 +127,8 @@ export class MenuComponent implements OnInit, OnDestroy {
       {
         name: ['', Validators.maxLength(5)],
         url: ['', Validators.maxLength(5)],
-        parent: ['']
+        parent: [''],
+        isShow: ['có']
       },
       {
         validator: ValidParentMenuValidator(this.menuList)
@@ -173,7 +174,24 @@ export class MenuComponent implements OnInit, OnDestroy {
   /**
    * Submit form search
    */
-  searchMenu(searchObj) {}
+  searchMenu(formValue) {
+    console.log(formValue);
+    const searchObj = this.prepareSearchObject(formValue);
+    console.log(searchObj);
+    // Datasource getAllByfilter
+  }
+
+  /**
+   * Prepare search obj
+   */
+  prepareSearchObject(formValue) {
+    const menuSearchObject = new MenuItem();
+    menuSearchObject.name = formValue.name;
+    menuSearchObject.url = formValue.url;
+    menuSearchObject.parentId = formValue.parent.id;
+    menuSearchObject.isShow = formValue.isShow;
+    return menuSearchObject;
+  }
 
   /**
    * Display autocomplete on parent values changed
@@ -187,7 +205,6 @@ export class MenuComponent implements OnInit, OnDestroy {
    */
   private _filter(name): MenuItem[] {
     const filterValue = name.toLowerCase();
-
     return this.menuList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }

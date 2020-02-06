@@ -12,8 +12,8 @@ export class MenuItem {
   isDeleted: boolean;
   createdBy: string;
   createdDate: Date;
-  lastModifiedBy: string;
-  lastModifiedDate: Date;
+  updateBy: string;
+  dateUpdated?: Date;
 
   clear(): void {
     this.id = undefined;

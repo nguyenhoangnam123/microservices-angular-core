@@ -32,12 +32,8 @@ export class MenuService {
   }
 
   createOrUpdateItem(menu: MenuItem): Observable<MenuItem> {
-    const API_CREATE_MENU_URL = SERVER_API_URL + `services/uaa/api/menus`;
-    if (menu.id > 0) {
-      return this.http.put<MenuItem>(API_CREATE_MENU_URL, menu, httpOptions);
-    } else {
-      return this.http.post<MenuItem>(API_CREATE_MENU_URL, menu, httpOptions);
-    }
+    const API_CREATE_MENU_URL = SERVER_API_URL + `services/uaa/api/menus/addOrEdit`;
+    return this.http.post<MenuItem>(API_CREATE_MENU_URL, menu, httpOptions);
   }
 
   findById(id: number): Observable<MenuItem> {
