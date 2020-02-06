@@ -51,6 +51,7 @@
     "ngx-cookie": "4.0.2",
     "ngx-daterangepicker-material": "^2.1.7",
     "ngx-highlightjs": "^3.0.3",
+    "ngx-icon-picker": "0.0.10",
     "ngx-infinite-scroll": "8.0.0",
     "ngx-perfect-scrollbar": "^8.0.0",
     "ngx-permissions": "^7.0.3",
