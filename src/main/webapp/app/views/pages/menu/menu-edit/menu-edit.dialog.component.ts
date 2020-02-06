@@ -29,6 +29,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
   menuForm: FormGroup;
   hasFormErrors = false;
   selectedTab = 0;
+  icon: string;
   //initialize subcription array
   private subscriptions: Subscription[] = [];
   /**
@@ -121,12 +122,11 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     this.menuForm = this.menuFB.group(
       {
         name: [this.menuItem.name, Validators.required],
-        description: [this.menuItem.description],
         menuIconCss: [this.menuItem.menuIconCss],
         url: [this.menuItem.url],
-        path: [this.menuItem.path],
         parent: [this.menuParentItem],
-        displayOrder: [this.menuItem.displayOrder, Validators.required]
+        displayOrder: [this.menuItem.displayOrder, Validators.required],
+        isShow: [false]
       },
       {
         validator: ValidParentMenuValidator(this.menuList)
@@ -149,14 +149,12 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     const _menu = new MenuItem();
     _menu.id = this.menuItem.id;
     _menu.name = controls.name.value;
-    _menu.description = controls.description.value ? controls.description.value : '';
     _menu.menuIconCss = controls.menuIconCss.value ? controls.menuIconCss.value : '';
     _menu.url = controls.url.value ? controls.url.value : '';
-    _menu.path = controls.path.value ? controls.path.value : '';
     _menu.parentId = controls.parent.value ? controls.parent.value.id : '';
     _menu.displayOrder = controls.displayOrder.value;
     _menu.isDeleted = this.menuItem.isDeleted;
-    _menu.updateBy = 'admin';
+    _menu.updatedBy = 'admin';
     return _menu;
   }
 
@@ -219,6 +217,15 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     });
 
     this.subscriptions.push(createOrUpdateSubscription);
+  }
+
+  /**
+   * Select icon css
+   *
+   * @param icon: string
+   */
+  onIconPickerSelect(icon: string): void {
+    this.menuForm.controls.menuIconCss.setValue(icon);
   }
 
   displayFn(menu?: MenuItem): string | undefined {

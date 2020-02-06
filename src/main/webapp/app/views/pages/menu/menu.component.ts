@@ -22,7 +22,7 @@ import { ValidParentMenuValidator } from './menu.validator';
 })
 export class MenuComponent implements OnInit, OnDestroy {
   dataSource: MenuDataSource;
-  displayedColumns = ['id', 'name', 'actions'];
+  displayedColumns = ['id', 'name', 'url', 'isShow', 'actions'];
   menuSearchForm: FormGroup;
   count: number;
   menuList: MenuItem[];
@@ -125,10 +125,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     // Init menuSearchForm
     this.menuSearchForm = this.menuFB.group(
       {
-        name: ['', Validators.maxLength(5)],
-        url: ['', Validators.maxLength(5)],
+        name: ['', Validators.maxLength(30)],
+        url: ['', Validators.maxLength(30)],
         parent: [''],
-        isShow: ['có']
+        isShow: [true]
       },
       {
         validator: ValidParentMenuValidator(this.menuList)
@@ -149,6 +149,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.editMenu(menu);
   }
 
+  /**
+   * edit menu
+   *
+   * @param _menu: Menu
+   */
   editMenu(_menu: MenuItem) {
     const _saveMessage = `Menu successfully has been saved.`;
     const _messageType = _menu.id ? MessageType.Update : MessageType.Create;
@@ -163,6 +168,13 @@ export class MenuComponent implements OnInit, OnDestroy {
       this.loadItems(true);
     });
   }
+
+  /**
+   * view menu
+   *
+   * @param _menu: Menu
+   */
+  view(_menu: MenuItem) {}
 
   /**
    * Clear form search

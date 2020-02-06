@@ -30,8 +30,10 @@ import {
   MatExpansionModule,
   MatTabsModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSlideToggleModule
 } from '@angular/material';
+import { IconPickerModule } from 'ngx-icon-picker';
 import { MenuEditDialogComponent } from './menu-edit/menu-edit.dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { usersReducer, UserEffects } from 'app/core/auth';
@@ -66,7 +68,9 @@ import { EffectsModule } from '@ngrx/effects';
     MatExpansionModule,
     MatTabsModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule,
+    IconPickerModule
   ],
   providers: [LayoutUtilsService],
   entryComponents: [ActionNotificationComponent, MenuEditDialogComponent, DeleteEntityDialogComponent],
