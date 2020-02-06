@@ -7,9 +7,9 @@
   <div *ngIf="menuItem">
     <div class="kt-form">
       <div class="kt-portlet__body">
-        <form [formGroup]="menuForm" class="kt-form kt-form--group-seperator-dashed">
+        <form [formGroup]="menuForm" class="kt-form kt-form--group-seperator-dashed" *ngIf="menuForm">
           <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
-            Oh snap! Change a few things up and try submitting again.
+            Có lỗi xảy ra
           </kt-alert>
 
           <div class="kt-form__section kt-form__section--first">
@@ -18,7 +18,7 @@
                 <!-- name -->
                 <div class="col-md-6 kt-margin-bottom-10-mobile">
                   <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter name" formControlName="name" />
+                    <input matInput placeholder="Tên menu" formControlName="name" />
                     <mat-error>
                       Name is
                       <strong>required</strong>
@@ -29,50 +29,10 @@
                     </mat-hint>
                   </mat-form-field>
                 </div>
-                <!-- description -->
-                <div class="col-md-6 kt-margin-bottom-10-mobile">
-                  <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter description" formControlName="description" />
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="kt-form__group">
-              <div class="row">
                 <!-- menuIconCss -->
                 <div class="col-md-6 kt-margin-bottom-10-mobile">
                   <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter menuIconCss" formControlName="menuIconCss" />
-                  </mat-form-field>
-                </div>
-                <!-- url -->
-                <div class="col-md-6 kt-margin-bottom-10-mobile">
-                  <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter url" formControlName="url" />
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="kt-form__group">
-              <div class="row">
-                <!-- path -->
-                <div class="col-md-6 kt-margin-bottom-10-mobile">
-                  <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter path" formControlName="path" />
-                  </mat-form-field>
-                </div>
-                <!-- parent -->
-                <div class="col-md-6 kt-margin-bottom-10-mobile">
-                  <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="parent" formControlName="parent" [matAutocomplete]="Parent" />
-                    <mat-error *ngIf="menuForm.get('parent').errors && menuForm.get('parent').errors.parentMenu">
-                      <strong>Parent menu didn't match any existing menu.</strong>
-                    </mat-error>
-                    <mat-autocomplete #Parent="matAutocomplete" [displayWith]="displayFn">
-                      <mat-option *ngFor="let menu of filterMenus | async" [value]="menu">
-                        {{ menu.name }}
-                      </mat-option>
-                    </mat-autocomplete>
+                    <input matInput placeholder="Nhập icon" formControlName="menuIconCss" />
                   </mat-form-field>
                 </div>
               </div>
@@ -82,7 +42,32 @@
                 <!-- displayOrder -->
                 <div class="col-md-6 kt-margin-bottom-10-mobile">
                   <mat-form-field class="mat-form-field-fluid">
-                    <input matInput placeholder="Enter order" formControlName="displayOrder" />
+                    <input matInput placeholder="Nhập số thứ tự order" formControlName="displayOrder" />
+                  </mat-form-field>
+                </div>
+                <!-- url -->
+                <div class="col-md-6 kt-margin-bottom-10-mobile">
+                  <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Nhập đường dẫn" formControlName="url" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="kt-form__group">
+              <div class="row">
+                <!-- parent -->
+                <div class="col-md-6 kt-margin-bottom-10-mobile">
+                  <mat-form-field class="mat-form-field-fluid">
+                    <mat-label>Nhập menu cha</mat-label>
+                    <input matInput placeholder="parent" formControlName="parent" [matAutocomplete]="Parent" />
+                    <mat-error *ngIf="menuForm.get('parent').errors && menuForm.get('parent').errors.parentMenu">
+                      <strong>Không tồn tại menu theo yêu cầu</strong>
+                    </mat-error>
+                    <mat-autocomplete #Parent="matAutocomplete" [displayWith]="displayFn">
+                      <mat-option *ngFor="let menu of filterMenus | async" [value]="menu">
+                        {{ menu.name }}
+                      </mat-option>
+                    </mat-autocomplete>
                   </mat-form-field>
                 </div>
               </div>

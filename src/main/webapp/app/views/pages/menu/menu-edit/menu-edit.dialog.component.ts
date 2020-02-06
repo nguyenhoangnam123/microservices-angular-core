@@ -108,7 +108,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
    */
   getTitle(): string {
     if (this.menuItem && this.menuItem.id) {
-      return `Edit menu ${this.menuItem.name}`;
+      return `Cập nhật menu ${this.menuItem.name}`;
     }
     // tslint:disable-next-line:no-string-throw
     return 'New menu';
@@ -156,6 +156,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
     _menu.parentId = controls.parent.value ? controls.parent.value.id : '';
     _menu.displayOrder = controls.displayOrder.value;
     _menu.isDeleted = this.menuItem.isDeleted;
+    _menu.updateBy = 'admin';
     return _menu;
   }
 
@@ -200,6 +201,7 @@ export class MenuEditDialogComponent implements OnInit, OnDestroy {
    * @param _menu: Menu
    */
   createOrUpdateMenu(menu: MenuItem) {
+    console.log(menu);
     if (!menu.id) {
       // menu.createdBy = this.currentUser.username ? this.currentUser.username : 'admin';
       menu.createdBy = 'admin';
